@@ -21,8 +21,9 @@ def get_coinrank():
   }
   response = requests.request("GET", url, headers=header, params=querystring)
   json_data = json.loads(response.text)
-  print(json_data)
-  return(json_data)
+  print(json_data['data']['totalMarkets'])
+  message = "TotalCoin: "+str(json_data['data']['totalCoins']) + " TotalMarket: " + str(json_data['data']['totalMarkets'])
+  return(message)
 @client.event
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
